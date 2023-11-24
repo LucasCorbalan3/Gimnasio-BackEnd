@@ -1,9 +1,9 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const Userschema = new Schema({
   nameUser: { required: true, type: String, minLength: 4, maxLength: 25 },
 
-  telefono: { required: true, type: Number, minLength: 6, maxLength: 13 },
+  telefono: { required: true, type: Number, minLength: 6, maxLength: 15 },
 
   emailUser: {
     required: true,
