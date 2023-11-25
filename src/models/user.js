@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 const Userschema = new Schema({
   nameUser: { required: true, type: String, minLength: 4, maxLength: 25 },
 
-  telefono: { required: true, type: Number, minLength: 6, maxLength: 15 },
+  telefono: { required: true, type: Number, minLength: 10, maxLength: 13 },
 
   emailUser: {
     required: true,
