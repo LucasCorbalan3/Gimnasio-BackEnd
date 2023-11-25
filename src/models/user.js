@@ -23,10 +23,7 @@ const Userschema = new Schema({
 
   isAdmin: { type: Boolean, required: true },
 
-  isTeacher: {
-    type: Boolean,
-    required: false,
-  },
+  isTeacher: { type: Boolean, required: false },
 });
 
 const Users = mongoose.model("user", Userschema);

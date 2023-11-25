@@ -5,10 +5,11 @@ import path from "path";
 import "./database";
 import router from "./routes/user.routes";
 import 'dotenv/config'
+import classes from "./routes/class.routes"
 
 const app = express();
 
-app.set("port", process.env.PORT || 4003);
+app.set("port", process.env.PORT || 4004);
 
 //middelware
 app.use(morgan("dev"));
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.use("/v1", router);
+app.use("/v1/classes", classes);
 
 app.listen(app.get("port"), () => {
   console.log("====================================");

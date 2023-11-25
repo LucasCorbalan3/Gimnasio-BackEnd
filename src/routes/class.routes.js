@@ -9,10 +9,10 @@ import {
 
 const router = Router();
 
-router.route("/Class").get(showClasses).post(createClass);
+router.route("/").get(showClasses).post(createClass);
 
 router
-  .route("/Class/:id")
+  .route("/classes/:id")
   .get(getOneClass)
   .put(updateClass)
   .delete(deleteClass);
