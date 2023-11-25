@@ -19,13 +19,13 @@ const userValidate = [
     .notEmpty()
     .withMessage("El campo Email es obligatorio")
     .isLength({ min: 10, max: 30 })
-    .withMessage("El campo Telefono debe tener entre 10 a 30 caracteres")
+    .withMessage("El campo Email debe tener entre 10 a 30 caracteres")
     .trim(),
   check("passwordUser")
     .notEmpty()
     .withMessage("El campo Password es obligatorio")
     .isLength({ min: 6, max: 25 })
-    .withMessage("El campo Telefono debe tener entre 6 a 25 caracteres")
+    .withMessage("El campo Password debe tener entre 6 a 25 caracteres")
     .trim(),
 
   (req, res, next) => {
