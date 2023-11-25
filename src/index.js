@@ -4,6 +4,7 @@ import cors from "cors";
 import path from "path";
 import "./database";
 import router from "./routes/user.routes";
+import 'dotenv/config'
 
 const app = express();
 

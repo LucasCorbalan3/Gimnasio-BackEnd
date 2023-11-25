@@ -2,22 +2,23 @@ import Users from "../models/user";
 
 const login = async (req, res) => {
   // res.send("Lista de Usuarios");
-   
 };
-
 
 const register = async (req, res) => {
   // res.send("el Usuarios encontrado");
   const { nameUser, telefono, emailUser, passwordUser, isAdmin } = req.body;
   try {
     console.log(req.body);
-    //verificar que si el email existe
+
     const userFound = await Users.findOne({ emailUser });
-    //si existe
+
     if (userFound)
       return res
         .status(400)
-        .json({ message: 'Ya existe un usuario con esta dirección de correo electrónico.' });
+        .json({
+          message:
+            "Ya existe un usuario con esta dirección de correo electrónico.",
+        });
     const newUser = new Users({
       nameUser,
       telefono,

@@ -11,8 +11,8 @@ const userValidate = [
   check("telefono")
     .notEmpty()
     .withMessage("El campo Telefono es obligatorio")
-    .isLength({ min: 6, max: 15 })
-    .withMessage("El campo Telefono debe tener entre 6 a 15 caracteres")
+    .isLength({ min: 10, max: 13 })
+    .withMessage("El campo Telefono debe tener entre 10 a 13 caracteres")
     .trim()
     .isInt(),
   check("emailUser")
