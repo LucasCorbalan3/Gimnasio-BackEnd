@@ -4,9 +4,10 @@ const validationsResults = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    res.send({ errors: errors.array() });
+    res.status(400).send({ errors: errors.array() });
+  } else {
+    next();
   }
-  next();
 };
 
 export default validationsResults;
