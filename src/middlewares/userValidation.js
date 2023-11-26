@@ -33,4 +33,6 @@ const userValidate = [
   },
 ];
 
-export default userValidate;
+
+
+export default userValidate ;

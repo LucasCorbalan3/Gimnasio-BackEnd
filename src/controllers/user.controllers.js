@@ -3,13 +3,35 @@ import bcrypt from "bcrypt";
 
 const login = async (req, res) => {
   // res.send("Lista de Usuarios");
+  try {
+    const { emailUser, passwordUser } = req.body;
+    const user = await Users.findOne({ emailUser }); //devuelve null
+    if (!user)
+      res.status(404).json({
+        message: "Correo electrónico o contraseña incorrectos- email",
+      });
+
+    const correctPassword = bcrypt.compareSync(passwordUser, user.passwordUser);
+    if (!correctPassword)
+      res.status(404).json({
+        message: "Correo electrónico o contraseña incorrectos- password",
+      });
+    res.status(200).json({
+      message: "Correo electrónico y contraseña del usuario correctos",
+      NameUser: user.nameUser,
+      uid: user._id,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: "error al loguear el usuario " });
+  }
 };
 
 const register = async (req, res) => {
   // res.send("el Usuarios encontrado");
-  const { nameUser, telefono, emailUser, passwordUser, isAdmin, isTeacher } =
-    req.body;
   try {
+    const { nameUser, telefono, emailUser, passwordUser, isAdmin, isTeacher } =
+      req.body;
     const userFound = await Users.findOne({ emailUser });
 
     if (userFound)
