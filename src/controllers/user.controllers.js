@@ -1,4 +1,5 @@
 import Users from "../models/user";
+import bcrypt from "bcrypt";
 
 const login = async (req, res) => {
   // res.send("Lista de Usuarios");
@@ -8,17 +9,13 @@ const register = async (req, res) => {
   // res.send("el Usuarios encontrado");
   const { nameUser, telefono, emailUser, passwordUser, isAdmin } = req.body;
   try {
-    console.log(req.body);
-
     const userFound = await Users.findOne({ emailUser });
 
     if (userFound)
-      return res
-        .status(400)
-        .json({
-          message:
-            "Ya existe un usuario con esta dirección de correo electrónico.",
-        });
+      return res.status(400).json({
+        message:
+          "Ya existe un usuario con esta dirección de correo electrónico.",
+      });
     const newUser = new Users({
       nameUser,
       telefono,
@@ -26,8 +23,14 @@ const register = async (req, res) => {
       passwordUser,
       isAdmin,
     });
+    const SALT_ROUND = 10;
+    newUser.passwordUser = await bcrypt.hash(passwordUser, SALT_ROUND);
     await newUser.save();
-    res.status(201).json({ message: "Usuario creado correctamente" });
+    res.status(201).json({
+      message: "Usuario creado correctamente",
+      NameUser: newUser.nameUser,
+      uid: newUser._id,
+    });
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: "error al crear el usuario" });

@@ -24,8 +24,8 @@ const userValidate = [
   check("passwordUser")
     .notEmpty()
     .withMessage("El campo Password es obligatorio")
-    .isLength({ min: 6, max: 25 })
-    .withMessage("El campo Password debe tener entre 6 a 25 caracteres")
+    .isLength({ min: 6 })
+    .withMessage("El campo Password debe tener como minimo 6 caracteres")
     .trim(),
 
   (req, res, next) => {

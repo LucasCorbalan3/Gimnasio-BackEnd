@@ -10,8 +10,9 @@ import {
 import userValidate from "../middlewares/userValidation";
 const router = Router();
 
-router.route("/").get(showUser).post(login);
-router.route("/NewUser").post([userValidate], register);
+router.route("/").get(showUser);
+router.route("/Login").post(login);
+router.route("/Register").post([userValidate], register);
 router.route("/User/:id").get(getOneUser).put(updateUser).delete(deleteUser);
 
 export default router;
