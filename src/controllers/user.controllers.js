@@ -7,7 +7,8 @@ const login = async (req, res) => {
 
 const register = async (req, res) => {
   // res.send("el Usuarios encontrado");
-  const { nameUser, telefono, emailUser, passwordUser, isAdmin } = req.body;
+  const { nameUser, telefono, emailUser, passwordUser, isAdmin, isTeacher } =
+    req.body;
   try {
     const userFound = await Users.findOne({ emailUser });
 
@@ -22,7 +23,18 @@ const register = async (req, res) => {
       emailUser,
       passwordUser,
       isAdmin,
+      isTeacher,
     });
+    if (req.body.isTeacher !== undefined) {
+      newUser.isTeacher = req.body.isTeacher;
+    } else {
+      newUser.isTeacher = false;
+    }
+    if (req.body.isAdmin !== undefined) {
+      newUser.isAdmin = req.body.isAdmin;
+    } else {
+      newUser.isAdmin = false;
+    }
     const SALT_ROUND = 10;
     newUser.passwordUser = await bcrypt.hash(passwordUser, SALT_ROUND);
     await newUser.save();
