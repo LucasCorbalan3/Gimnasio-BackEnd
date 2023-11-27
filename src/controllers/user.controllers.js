@@ -1,3 +1,4 @@
+import generateJWT from "../helpers/generateJWT";
 import Users from "../models/user";
 import bcrypt from "bcrypt";
 
@@ -16,10 +17,14 @@ const login = async (req, res) => {
       res.status(404).json({
         message: "Correo electrónico o contraseña incorrectos- password",
       });
+
+    const token = await generateJWT(user._id, user.nameUser);
+
     res.status(200).json({
       message: "Correo electrónico y contraseña del usuario correctos",
       NameUser: user.nameUser,
       uid: user._id,
+      token,
     });
   } catch (error) {
     console.log(error);
@@ -59,11 +64,15 @@ const register = async (req, res) => {
     }
     const SALT_ROUND = 10;
     newUser.passwordUser = await bcrypt.hash(passwordUser, SALT_ROUND);
+
+    const token = await generateJWT(newUser._id, newUser.nameUser);
+
     await newUser.save();
     res.status(201).json({
       message: "Usuario creado correctamente",
       NameUser: newUser.nameUser,
       uid: newUser._id,
+      token,
     });
   } catch (error) {
     console.log(error);
