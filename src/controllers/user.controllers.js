@@ -35,8 +35,7 @@ const login = async (req, res) => {
 const register = async (req, res) => {
   // res.send("el Usuarios encontrado");
   try {
-    const { nameUser, telefono, emailUser, passwordUser, isAdmin, isTeacher } =
-      req.body;
+    const { nameUser, telefono, emailUser, passwordUser, isAdmin } = req.body;
     const userFound = await Users.findOne({ emailUser });
 
     if (userFound)
@@ -50,13 +49,8 @@ const register = async (req, res) => {
       emailUser,
       passwordUser,
       isAdmin,
-      isTeacher,
     });
-    if (req.body.isTeacher !== undefined) {
-      newUser.isTeacher = req.body.isTeacher;
-    } else {
-      newUser.isTeacher = false;
-    }
+
     if (req.body.isAdmin !== undefined) {
       newUser.isAdmin = req.body.isAdmin;
     } else {
@@ -94,7 +88,6 @@ const showUser = async (req, res) => {
 const getOneUser = async (req, res) => {
   //res.send("Lista de Usuarios");
   try {
-    console.log(req.params.id);
     const oneUser = await Users.findById(req.params.id);
     res.status(200).json(oneUser);
   } catch (error) {

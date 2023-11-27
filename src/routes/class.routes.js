@@ -9,7 +9,7 @@ import {
 
 const router = Router();
 
-router.route("/Class").get(showClasses).post(createClass);
+router.route("/").get(showClasses).post(createClass);
 
 router
   .route("/Class/:id")

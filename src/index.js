@@ -4,6 +4,7 @@ import cors from "cors";
 import path from "path";
 import "./database";
 import router from "./routes/user.routes";
+import clas from "./routes/class.routes";
 import 'dotenv/config'
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.use("/v1", router);
+app.use("/v1/class", clas);
 
 app.listen(app.get("port"), () => {
   console.log("====================================");

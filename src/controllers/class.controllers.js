@@ -1,21 +1,72 @@
-const showClasses = (req, res) => {
-  res.send("Lista de clase");
+import Classes from "../models/classes";
+
+const createClass = async (req, res) => {
+  //res.send("se creó el clase");
+  try {
+    const newClass = new Classes(req.body);
+    await newClass.save();
+    res.status(201).json({
+      mensaje: "El turno fue creado de manera exitosa",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      mensaje: "Error al crear la clases",
+    });
+  }
 };
 
-const getOneClass = (req, res) => {
-  res.send("el clase encontrado");
+const showClasses = async (req, res) => {
+  //res.send("Lista de clase");
+  try {
+    const listClass = await Users.find();
+    res.status(200).json(listClass);
+  } catch (error) {
+    console.log(error);
+    console.log(error);
+    res.status(404).json({
+      mensaje: "Error al buscar las clases",
+    });
+  }
 };
 
-const createClass = (req, res) => {
-  res.send("se creó el clase");
+const getOneClass = async (req, res) => {
+  //res.send("el clase encontrado");
+  try {
+    const oneClass = await Classes.findById(req.params.id);
+    res.status(200).json(oneClass);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      mensaje: "Error al buscar la clases",
+    });
+  }
 };
 
-const updateClass = (req, res) => {
-  res.send("se actualizó el clase");
+const updateClass = async (req, res) => {
+  //res.send("se actualizó el clase");
+  try {
+    await Classes.findByIdAndUpdate(req.params.id, req.body);
+    res.status(200).json({ message: "El usuario fue editado correctamente" });
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      mensaje: "Error al editar la clases",
+    });
+  }
 };
 
-const deleteClass = (req, res) => {
-  res.send("se borró el clase");
+const deleteClass = async (req, res) => {
+  //res.send("se borró el clase");
+  try {
+    await Classes.findByIdAndDelete(req.params.id, req.body);
+    res.status(200).json({ message: "El usuario fue eliminado correctamente" });
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      mensaje: "Error al eliminar la clases",
+    });
+  }
 };
 
 export { showClasses, createClass, getOneClass, updateClass, deleteClass };
