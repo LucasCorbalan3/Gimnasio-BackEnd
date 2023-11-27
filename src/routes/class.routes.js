@@ -12,7 +12,7 @@ const router = Router();
 router.route("/").get(showClasses).post(createClass);
 
 router
-  .route("/Class/:id")
+  .route("/class/:id")
   .get(getOneClass)
   .put(updateClass)
   .delete(deleteClass);

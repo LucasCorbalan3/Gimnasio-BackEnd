@@ -35,7 +35,7 @@ const login = async (req, res) => {
 const register = async (req, res) => {
   // res.send("el Usuarios encontrado");
   try {
-    const { nameUser, telefono, emailUser, passwordUser, isAdmin } = req.body;
+    const { nameUser, telefono, emailUser, passwordUser, rol } = req.body;
     const userFound = await Users.findOne({ emailUser });
 
     if (userFound)
@@ -48,14 +48,9 @@ const register = async (req, res) => {
       telefono,
       emailUser,
       passwordUser,
-      isAdmin,
+      rol: rol || "usuario",
     });
 
-    if (req.body.isAdmin !== undefined) {
-      newUser.isAdmin = req.body.isAdmin;
-    } else {
-      newUser.isAdmin = false;
-    }
     const SALT_ROUND = 10;
     newUser.passwordUser = await bcrypt.hash(passwordUser, SALT_ROUND);
 
@@ -99,15 +94,34 @@ const getOneUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  // res.send("se actualizó el Usuarios");
   try {
-    await Users.findByIdAndUpdate(req.params.id, req.body);
-    res.status(200).json({ message: "El usuario fue editado correctamente" });
-  } catch (error) {
-    console.log(error);
-    res.status(404).json({
-      mensaje: "Error al editar el usuario",
+    const { id } = req.params;
+    const rol = req.body;
+
+    if (
+      rol.rol &&
+      !["usuario", "profesor", "admin"].includes(rol.rol)
+    ) {
+      return res.status(400).json({ message: "Rol no válido." });
+    }
+
+    const usuarioExistente = await Users.findOneAndUpdate(
+      { _id: id },
+      { $set: rol },
+      { new: true }
+    );
+
+    if (!usuarioExistente) {
+      return res.status(404).json({ message: "Usuario no encontrado." });
+    }
+
+    res.status(200).json({
+      message: "Usuario actualizado correctamente",
+      usuario: usuarioExistente,
     });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al actualizar el usuario." });
   }
 };
 

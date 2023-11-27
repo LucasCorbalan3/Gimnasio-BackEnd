@@ -19,7 +19,7 @@ const createClass = async (req, res) => {
 const showClasses = async (req, res) => {
   //res.send("Lista de clase");
   try {
-    const listClass = await Users.find();
+    const listClass = await Classes.find();
     res.status(200).json(listClass);
   } catch (error) {
     console.log(error);

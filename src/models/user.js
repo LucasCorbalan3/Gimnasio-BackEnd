@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import { boolean } from "webidl-conversions";
 
 const Userschema = new Schema({
   nameUser: { required: true, type: String, minLength: 4, maxLength: 25 },
@@ -20,7 +21,11 @@ const Userschema = new Schema({
     unique: true,
   },
 
-  isAdmin: { type: Boolean, required: true },
+  rol: {
+    type: String,
+    enum: ["usuario", "profesor", "admin"],
+    default: "usuario",
+  },
 });
 
 const Users = mongoose.model("user", Userschema);

@@ -9,7 +9,7 @@ import 'dotenv/config'
 
 const app = express();
 
-app.set("port", process.env.PORT || 4003);
+app.set("port", process.env.PORT || 4002);
 
 //middelware
 app.use(morgan("dev"));
