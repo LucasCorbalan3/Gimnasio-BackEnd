@@ -22,7 +22,6 @@ const showClasses = async (req, res) => {
     res.status(200).json(listClass);
   } catch (error) {
     console.log(error);
-    console.log(error);
     res.status(404).json({
       mensaje: "Error al buscar las clases",
     });
