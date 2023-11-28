@@ -6,15 +6,16 @@ import {
   updateClass,
   deleteClass,
 } from "../controllers/class.controllers";
-
+import validateJWT from "../middlewares/validateJWT";
 const router = Router();
 
-router.route("/Class").get(showClasses).post(createClass);
+router.route("/").get(showClasses);
+router.route("/").post([validateJWT], createClass);
 
 router
-  .route("/Class/:id")
+  .route("/class/:id")
   .get(getOneClass)
-  .put(updateClass)
-  .delete(deleteClass);
+  .put([validateJWT], updateClass)
+  .delete([validateJWT], deleteClass);
 
 export default router;
