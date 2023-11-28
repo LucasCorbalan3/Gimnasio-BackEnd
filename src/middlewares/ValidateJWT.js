@@ -14,7 +14,7 @@ const validateJWT = (req, res, next) => {
   } catch {
     res
       .status(401)
-      .json({ message: "invalid token - authentification failed" });
+      .json({ message: "token inválido - autentificación fallida" });
   }
   next();
 };
