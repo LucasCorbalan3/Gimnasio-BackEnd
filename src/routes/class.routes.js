@@ -10,7 +10,7 @@ import validateJWT from "../middlewares/validateJWT";
 const router = Router();
 
 router.route("/").get(showClasses);
-router.post("/", [validateJWT], createClass);
+router.route("/").post([validateJWT], createClass);
 
 router
   .route("/class/:id")

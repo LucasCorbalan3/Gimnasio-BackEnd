@@ -5,12 +5,12 @@ const createClass = async (req, res) => {
     const newClass = new Classes(req.body);
     await newClass.save();
     res.status(201).json({
-      mensaje: "El turno fue creado de manera exitosa",
+      mensaje: "La clase fue creado de manera exitosa",
     });
   } catch (error) {
     console.log(error);
     res.status(404).json({
-      mensaje: "Error en la creacion del turno",
+      mensaje: "Error en la creacion de la clase",
     });
   }
 };
