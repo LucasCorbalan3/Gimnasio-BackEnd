@@ -1,7 +1,6 @@
 import Classes from "../models/classes";
 
 const createClass = async (req, res) => {
-  //res.send("se creó el clase");
   try {
     const newClass = new Classes(req.body);
     await newClass.save();
@@ -11,7 +10,7 @@ const createClass = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(404).json({
-      mensaje: "Error al crear la clases",
+      mensaje: "Error en la creacion del turno",
     });
   }
 };

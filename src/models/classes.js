@@ -3,7 +3,6 @@ import mongoose, { Schema } from "mongoose";
 const Classeschema = new Schema({
   nameClass: { required: true, type: String, minLength: 5, maxLength: 30 },
   Teacher: {
-    required: true,
     type: String,
   },
   detailsClass: { required: true, type: String, minLength: 10, maxLength: 100 },
