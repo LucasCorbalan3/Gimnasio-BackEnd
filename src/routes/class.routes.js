@@ -15,7 +15,7 @@ router.post("/", [validateJWT], createClass);
 router
   .route("/class/:id")
   .get(getOneClass)
-  .put(updateClass)
-  .delete(deleteClass);
+  .put([validateJWT], updateClass)
+  .delete([validateJWT], deleteClass);
 
 export default router;
