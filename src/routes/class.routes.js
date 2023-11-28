@@ -10,12 +10,12 @@ import validateJWT from "../middlewares/validateJWT";
 const router = Router();
 
 router.route("/").get(showClasses);
-router.route("/").post([validateJWT], createClass);
+router.route("/").post(validateJWT, createClass);
 
 router
   .route("/class/:id")
   .get(getOneClass)
-  .put([validateJWT], updateClass)
-  .delete([validateJWT], deleteClass);
+  .put(validateJWT, updateClass)
+  .delete(validateJWT, deleteClass);
 
 export default router;
