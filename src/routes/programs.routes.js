@@ -14,10 +14,11 @@ const router = Router();
 router.route("/").get(showPrograms);
 router.route("/").post([validateJWT, programValidation], createProgram);
 
+
 router
   .route("/Program/:id")
   .get(getOneProgram)
-  .put([validateJWT], updateProgram)
-  .delete([validateJWT], deleteProgram);
+  .put(validateJWT, updateProgram)
+  .delete(validateJWT, deleteProgram);
 
 export default router;
