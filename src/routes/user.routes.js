@@ -6,9 +6,9 @@ import {
   register,
   updateUser,
   deleteUser,
-} from "../controllers/user.controllers";
-import userValidate from "../middlewares/userValidation";
-import loginValidaton from "../middlewares/loginValidation";
+} from "../controllers/user.controllers.js";
+import userValidate from "../middlewares/userValidation.js";
+import loginValidaton from "../middlewares/loginValidation.js";
 const router = Router();
 
 router.route("/").get(showUser);

@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import { boolean } from "webidl-conversions";
 
 const Userschema = new Schema({
   nameUser: { required: true, type: String, minLength: 4, maxLength: 25 },

@@ -3,9 +3,9 @@ import morgan from "morgan";
 import cors from "cors";
 import path from "path";
 import "./database";
-import router from "./routes/user.routes";
-import clas from "./routes/class.routes";
-import program from "./routes/programs.routes";
+import router from "./routes/user.routes.js";
+import clas from "./routes/class.routes.js";
+import program from "./routes/programs.routes.js";
 import "dotenv/config";
 
 const app = express();

@@ -1,4 +1,4 @@
-import program from "../models/program";
+import program from "../models/program.js";
 
 const createProgram = async (req, res) => {
   // res.send("se creó el programa");
