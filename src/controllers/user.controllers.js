@@ -9,13 +9,13 @@ const login = async (req, res) => {
     const user = await Users.findOne({ emailUser }); //devuelve null
     if (!user)
       res.status(404).json({
-        message: "Correo electrónico o contraseña incorrectos- email",
+        message: "Correo electrónico o contraseña incorrectos",
       });
 
     const correctPassword = bcrypt.compareSync(passwordUser, user.passwordUser);
     if (!correctPassword)
       res.status(404).json({
-        message: "Correo electrónico o contraseña incorrectos- password",
+        message: "Correo electrónico o contraseña incorrectos",
       });
 
     const token = await generateJWT(user._id, user.nameUser);
