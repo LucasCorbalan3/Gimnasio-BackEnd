@@ -6,7 +6,7 @@ import {
   updateProgram,
   deleteProgram,
 } from "../controllers/programs.controllers.js";
-import validateJWT from "../middlewares/validateJWT.js";
+import validateJWT from "../middlewares/validateToken.js";
 import programValidation from "../middlewares/programValidation.js";
 
 const router = Router();

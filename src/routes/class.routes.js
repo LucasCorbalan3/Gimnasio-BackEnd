@@ -6,7 +6,7 @@ import {
   updateClass,
   deleteClass,
 } from "../controllers/class.controllers.js";
-import validateJWT from "../middlewares/validateJWT.js";
+import validateJWT from "../middlewares/validateToken.js";
 const router = Router();
 
 router.route("/").get(showClasses);
