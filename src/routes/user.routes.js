@@ -14,6 +14,10 @@ const router = Router();
 router.route("/").get(showUser);
 router.route("/Login").post([loginValidaton], login);
 router.route("/Register").post([userValidate], register);
-router.route("/User/:id").get(getOneUser).put(updateUser).delete(deleteUser);
+router
+  .route("/User/:id")
+  .get(getOneUser)
+  .put([userValidate], updateUser)
+  .delete(deleteUser);
 
 export default router;
