@@ -5,8 +5,8 @@ import {
   getOneClass,
   updateClass,
   deleteClass,
-} from "../controllers/class.controllers";
-import validateJWT from "../middlewares/validateJWT";
+} from "../controllers/class.controllers.js";
+import validateJWT from "../middlewares/validateJWT.js";
 const router = Router();
 
 router.route("/").get(showClasses);
