@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "API para BE de Gym",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "npx babel-node src/index.js",
     "dev": "nodemon --exec npx babel-node src/index.js"
