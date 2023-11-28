@@ -1,6 +1,6 @@
 import generateJWT from "../helpers/generateJWT.js";
 import Users from "../models/user.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 const login = async (req, res) => {
   // res.send("Lista de Usuarios");
