@@ -18,7 +18,12 @@ const login = async (req, res) => {
         message: "Correo electrónico o contraseña incorrectos",
       });
 
-    const token = await generateJWT(user._id, user.nameUser);
+    const token = await generateJWT(
+      user._id,
+      user.nameUser,
+      user.rol,
+      user.emailUser
+    );
 
     res.status(200).json({
       message: "Correo electrónico y contraseña del usuario correctos",
@@ -98,10 +103,7 @@ const updateUser = async (req, res) => {
     const { id } = req.params;
     const rol = req.body;
 
-    if (
-      rol.rol &&
-      !["usuario", "profesor", "admin"].includes(rol.rol)
-    ) {
+    if (rol.rol && !["usuario", "profesor", "admin"].includes(rol.rol)) {
       return res.status(400).json({ message: "Rol no válido." });
     }
 
