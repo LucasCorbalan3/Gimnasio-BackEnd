@@ -28,6 +28,8 @@ const login = async (req, res) => {
     res.status(200).json({
       message: "Correo electrónico y contraseña del usuario correctos",
       NameUser: user.nameUser,
+      emailUser: user.emailUser,
+      rol: user.rol,
       uid: user._id,
       token,
     });
@@ -59,12 +61,13 @@ const register = async (req, res) => {
     const SALT_ROUND = 10;
     newUser.passwordUser = await bcrypt.hash(passwordUser, SALT_ROUND);
 
-    const token = await generateJWT(newUser._id, newUser.nameUser);
+    const token = await generateJWT(newUser._id, newUser.nameUser,newUser.emailUser);
 
     await newUser.save();
     res.status(201).json({
       message: "Usuario creado correctamente",
       NameUser: newUser.nameUser,
+      emailUser: newUser.emailUser
       uid: newUser._id,
       token,
     });
