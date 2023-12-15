@@ -67,7 +67,7 @@ const register = async (req, res) => {
     res.status(201).json({
       message: "Usuario creado correctamente",
       NameUser: newUser.nameUser,
-      emailUser: newUser.emailUser
+      emailUser: newUser.emailUser,
       uid: newUser._id,
       token,
     });
