@@ -59,7 +59,7 @@ const deleteClass = async (req, res) => {
   //res.send("se borró el clase");
   try {
     await Classes.findByIdAndDelete(req.params.id, req.body);
-    res.status(200).json({ message: "El usuario fue eliminado correctamente" });
+    res.status(200).json({ message: "La clase fue eliminada correctamente" });
   } catch (error) {
     console.log(error);
     res.status(404).json({
