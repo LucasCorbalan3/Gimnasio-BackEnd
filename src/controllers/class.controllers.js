@@ -46,7 +46,7 @@ const updateClass = async (req, res) => {
   //res.send("se actualizó el clase");
   try {
     await Classes.findByIdAndUpdate(req.params.id, req.body);
-    res.status(200).json({ message: "El usuario fue editado correctamente" });
+    res.status(201).json({ message: "El usuario fue editado correctamente" });
   } catch (error) {
     console.log(error);
     res.status(404).json({
