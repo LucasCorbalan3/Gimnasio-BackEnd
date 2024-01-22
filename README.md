@@ -3,9 +3,10 @@
 Esta página web fue realizada con Express,node.js y usando como base de datos mongoDB, podemos crear usuarios,clases y unirlos con el FrontEnd mediante variable de entorno.
 Cuenta con libreria de encriptacion BCrypt de password para inicio de sesion, al mismo tiempo que autenticacion por medio de JWT
 
+
 ---
 
-## ✨✨✨ [Demo]() ✨✨✨
+## ✨✨✨ [ DEMO ](https://rollingym.netlify.app/) ✨✨✨
 
 ## Librerias usadas
 
@@ -35,4 +36,9 @@ npm run dev
 
 ## Autor
 
-Corbalan Lucas
+- [Lucas Corbalan](https://github.com/LucasCorbalan3)
+
+### Contribución
+
+- [Alexis Isla](https://github.com/AILexisIsla)
+- [Julieta Ferreyra](https://github.com/LokTedd4000)
